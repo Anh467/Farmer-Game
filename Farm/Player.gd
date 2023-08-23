@@ -1,6 +1,6 @@
 extends KinematicBody2D
 export var ACCELERATION = 500
-export var MAX_SPEED = 2
+export var MAX_SPEED = 30
 export var ROLL_SPEED = 120
 export var FRICTION = 500
 enum {
@@ -11,6 +11,7 @@ enum {
 var state = MOVE
 var velocity = Vector2.ZERO
 var roll_vector = Vector2.DOWN
+var animate_state= "default"
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -20,9 +21,10 @@ var roll_vector = Vector2.DOWN
 func _ready():
 	pass # Replace with function body.
 func _physics_process(delta):
-	Inventory.player_position= position;
+	GlobalPlayer.player_position= position;
 	match state:
 		MOVE: move_state(delta)
+	$AnimatedSprite.play(animate_state)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
@@ -35,17 +37,25 @@ func move_state(delta):
 	input_vector = input_vector.normalized()		
 	if input_vector != Vector2.ZERO:
 		if input_vector.y < 0:
-			$AnimatedSprite.play("walk_up")
+			animate_state = "walk_up"
 		elif input_vector.y > 0:
-			$AnimatedSprite.play("walk_down")
+			animate_state = "walk_down"
 		elif input_vector.x >0:
-			$AnimatedSprite.play("walk_right")
+			animate_state = "walk_right"
 		else:
-			$AnimatedSprite.play("walk_left")
-		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
+			animate_state = "walk_left"
+		
+		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta) 
 	else:
-		$AnimatedSprite.play("default")
+		if animate_state == "walk_up":
+			animate_state = "idle_up"
+		elif animate_state == "walk_down":
+			animate_state = "idle_down"
+		elif animate_state == "walk_right":
+			animate_state = "idle_right"
+		elif animate_state == "walk_left":
+			animate_state = "idle_left"
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
-	move_and_collide(velocity)
+	move_and_slide(velocity)
 
 	

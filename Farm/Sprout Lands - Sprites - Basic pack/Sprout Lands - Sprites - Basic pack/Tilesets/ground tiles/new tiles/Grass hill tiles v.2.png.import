@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Grass hill tiles v.2.png-d7252be7b8e22bfca229d043d42af23d.stex"
+path="res://.import/Grass hill tiles v.2.png-053f0eb3759dada7d110e79f2af2abf9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Tilesets/ground tiles/new tiles/Grass hill tiles v.2.png"
-dest_files=[ "res://.import/Grass hill tiles v.2.png-d7252be7b8e22bfca229d043d42af23d.stex" ]
+source_file="res://Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/tilesets/Ground tiles/new tiles/Grass hill tiles v.2.png"
+dest_files=[ "res://.import/Grass hill tiles v.2.png-053f0eb3759dada7d110e79f2af2abf9.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
